@@ -1,0 +1,18 @@
+<html>
+<body>
+    <erl>
+   	out(_Arg) ->
+		IP = ipformat:format(_Arg#arg.client_ip_port),
+    	Datetime = datetimeformat:format(calendar:local_time()),
+   	    case postvar(_Arg,"query") of
+    		undefined -> [{redirect, "/"}];
+		{ok, Val} ->	
+		Params = {IP, Val, Datetime},
+		{spikeservice, 'myserver@sathya'} ! Params,
+		Ret = [{redirect, string:concat("http://google.com/search?hl=en&lr=lang_en%7Clang_sv&q=", yaws_api:url_encode(Val))}]
+	    end
+	    .
+    </erl>
+    
+</body>
+</html>
