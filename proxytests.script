@@ -1,0 +1,5 @@
+main(_) ->
+	ipformat_tests:test(),
+	datetimeformat_tests:test()
+.
+	
