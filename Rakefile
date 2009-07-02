@@ -43,7 +43,7 @@ end
 
 task :default => :package
 
-task :build_and_deploy => :package do
+task :build_and_deploy do
   cmd = "copy build#{FILE_SEPARATOR}* c:#{FILE_SEPARATOR}googleProxy"
   system(cmd)
 end
