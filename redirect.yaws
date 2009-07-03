@@ -8,7 +8,8 @@
     		undefined -> [{redirect, "/"}];
 		{ok, Val} ->	
 		Params = {IP, Val, Datetime},
-		{spikeservice, 'myserver@sathya'} ! Params,
+		Node = list_to_atom(string:concat("myserver@",systeminfo:getenv("HOSTNAME"))),
+		{spikeservice, Node} ! Params,
 		Ret = [{redirect, string:concat("http://google.com/search?hl=en&lr=lang_en%7Clang_sv&q=", yaws_api:url_encode(Val))}]
 	    end
 	    .
