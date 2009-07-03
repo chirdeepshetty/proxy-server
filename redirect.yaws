@@ -2,7 +2,7 @@
 <body>
     <erl>
    	out(_Arg) ->
-		IP = ipformat:format(_Arg#arg.client_ip_port),
+		IP = ipformat:format([_Arg#arg.client_ip_port]),
     	Datetime = datetimeformat:format(calendar:local_time()),
    	    case postvar(_Arg,"query") of
     		undefined -> [{redirect, "/"}];
